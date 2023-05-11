@@ -103,9 +103,10 @@ def KF(k, Ps):
     return u_errors, np.sum(post_covs,axis=1)
 
 #%% find moving sensor trajectories
-k = 1
+k = 1 # number of sensors
 n_time = 14
 
+# sensor movement constraint for radius r = 15
 grid = Grid2D(360,180,r=15, mask=mask, wrap_x=True)
 model = OOQR(Psi, Theta, grid)
 model.fit(n_time, k, cycle=True, restart=int(10/k))
